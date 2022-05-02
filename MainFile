@@ -1,0 +1,44 @@
+#This program calculates the Net Pay for employees while using input validations
+
+employee_id = int(input('Enter the employee number:'))
+
+#Validation loop to terminate program if employee number equals zero
+while employee_id != 0: 
+
+  gross = float(input('Enter the Gross pay:'))
+  while gross <= 0:
+    print('ERROR! Gross pay cannot be less than zero')
+    gross = float(input('Enter the Gross pay:'))
+
+  state_tax = float(input('Enter the State Tax amount:'))
+  while state_tax <= 0:
+    print('ERROR! State tax cannot be less than zero')
+    state_tax = float(input('Enter the State tax amount'))
+
+  federal_tax = float(input('Enter the Federal Tax amount:'))
+  while federal_tax <= 0:
+    print('ERROR! Federal tax cannot be less than zero')
+    federal_tax = float(input('Enter the Federal tax amount'))
+
+  fica_tax = float(input('Enter the FICA tax amount:'))
+  while fica_tax <= 0:
+    print('ERROR! FICA tax cannot be less than zero')
+    fica_tax = float(input('Enter the FICA tax amount:'))
+
+  #Calculate the net pay
+  tax_total = state_tax + federal_tax + fica_tax
+  
+  while tax_total > gross:
+    print('ERROR! Tax amount cannot be greater than Gross pay')
+    print('Please start again!')
+    employee_id = int(input('Enter the employee number:'))
+  
+  net = gross - tax_total
+
+  #Display the results
+  print('Gross Pay:', gross)
+  print('State Tax:', state_tax)
+  print('Federal Tax:', federal_tax)
+  print('Fica Tax:', fica_tax)
+  print('Net Pay:', format(net, ".2f")) 
+  employee_id = int(input('Enter the employee number:'))
